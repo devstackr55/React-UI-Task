@@ -62,7 +62,7 @@ const UserList = () => {
   return (
     <div className="List-div" onScroll={onScroll}>
       {listRenderer()}
-      {true && <Loader type="ThreeDots" color="green" height={40} width={40} />}
+      {loading && <Loader type="ThreeDots" color="green" height={40} width={40} />}
       {(pageNo === totalPages + 1) && <div> No More Users To Show </div>}
     </div>
   )
