@@ -1,28 +1,45 @@
-# Ombori React Code Test
+# React Test Task
 
-Hi there, we're really excited that you've made it this far in our interview process and look forward to getting to know you better.
+## Introduction
+This simple UI is just for testing the Students' section's CRUD operations.
 
-At Ombori, we strive to build fantastic apps using well structured and efficient code.
-The purpose of this task is to see how you solve problems and to make sure that you follow our linting rules as well as industry best practices.
 
-We've scaffolded a very basic project that will serve as your starting point for the task.
-Make sure you've got eslint integrated in your editor or run the lint task and fix any errors before submitting your code for review. If there's a rule you disagree with, you can change it but we will ask you to motivate why during our feedback session on this task.
+## Installing and Running the app
 
-___
+### Steps to clone the repository
 
-What the test app should do:
+```
+git clone https://github.com/devstackr55/React-UI-Task.git
+cd React-UI-Task
 
-* Display a custom loading component for 3 seconds
-* Fetch user data from https://reqres.in/
-* Display those users in a scrollable view that lazy loads more users when you've reached the bottom of the list, if there are no more users to load it should indicate that there are no more users.
-* Be responsive, look great and work well on different devices, especially various mobile screens
+```
 
-We've prepared some screenshots in the design folder as well as a video of what the loading component should look like.
+### Steps to install packages
+In the project directory's terminal run below command to install all the required packages
+```
+yarn
+```
+### Step to setup env variables
 
-___
+```
+Create a .env file in the project directory. In this file copy over the contents as is from the .env.example file to have the necessary environment variables set
+```
 
-Those are the requirements. If you wish to show off more of your skillset, feel free to expand upon the app, perhaps integrating a state management library like Redux to handle the fetching of data. Using TypeScript will be a big ➕. If you're really into functional programming, feel free to use something like Ramda. It's really up to you!
+### Step to start the app
 
-We put no strict requirements on how you choose to solve any of the points in this task. We only ask that you be able to motivate your choices.
+In the project directory terminal run the below command
+```
+yarn run start
+```
 
-![You got this!](https://media.giphy.com/media/ClcWrARkrq1GM/giphy.gif)
+## Assumptions and Considerations
+
+* I did not use any libraries like react-virtualized, for the list instead tried to implement my own version to fetch data on the fly.
+
+* Also since the API provided was paginated with fixed number of items per request I made list to have a max-height which is equal to the page size returned by the API. To have everything responsive would've meant to add calculation of the height of individual list item and the total available area to identify how many items can be displayed and then fetch as many pages from the API. This would have two issues:
+    * We would be fetching more no. of records (due to page size being fixed) than required.
+    * Frequent resizing of the window would've led to too much calculation and way too many API calls, which would not have been ideal.
+
+* Also the use case did not exactly warrant the use of a redux-saga implementation. Or else I would have added the necessary actions and reducers for redux and workers and watcher for saga for API calls. Instead I put in it using React Hooks.
+
+* Another improvement could've been to add UI libraries like Material-UI or Semantic-UI for more versatile components and look and feel.
